@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
         <!-- data binding -->
         <h3>{{ name }}</h3>
         <h3 [ngStyle]="1==1 ? textRed : textYellow">{{ name }}</h3>
+        <h3 [style.color]="'red'">{{ name }}</h3>
         <h3 [ngClass]="1==1 ? 'blue' : 'green'">{{ name }}</h3>
         <button (click)="showMe()">Click me!</button>
     `,
