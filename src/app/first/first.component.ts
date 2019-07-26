@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FirstComponent implements OnInit {
   name: string;
   age: number;
+  arrNumber = [ 1, 3, 25, 62, 31, 11 ];
   constructor() { }
 
   ngOnInit() {

@@ -14,5 +14,13 @@
 [(ngModel)]="txtSchool">
  
 <p>{{txtSchool}}</p>
-
+<ol type="A">
+    <li *ngFor="let item of arrNumber">{{ item }}</li>
+</ol>
+<p>{{ arrNumber }}</p>
+<p *ngIf="1==1; else dataElse">DK is true</p>
+<ng-template #dataElse>
+    <p>DK is false</p>
+</ng-template>
+<!-- item >= 10 ? li color red : li color blue -->
 <hr>
