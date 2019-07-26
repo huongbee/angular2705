@@ -1,1 +1,18 @@
 <p>first works!</p>
+<input type="text" #txtName placeholder="Enter name">
+<button (click)="getDataInput(txtName)">Get Data</button>
+<h4> {{ name }} </h4>
+<h4> {{ txtName.value }} </h4>
+
+<input type="text" #txtAge placeholder="Enter Age"
+(keyup)="getData(txtAge)">
+<!-- number: pipe -->
+<p>{{ age | number}}</p>
+<p>{{ txtAge.value }}</p>
+
+<input type="text" placeholder="Enter School"
+[(ngModel)]="txtSchool">
+ 
+<p>{{txtSchool}}</p>
+
+<hr>
