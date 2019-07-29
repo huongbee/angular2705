@@ -11,7 +11,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formSignUp = this.formBuilder.group({
-      email: '',
+      email: 'admin@gmail.com',
       fullname: '',
       age: '',
       password: '',
@@ -21,5 +21,9 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
   }
+  onSignUp() {
+    const { email, fullname, age, password, confirm_password } = this.formSignUp.value;
 
+    console.log(email, fullname, age, password, confirm_password);
+  }
 }
