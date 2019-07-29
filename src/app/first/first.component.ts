@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class FirstComponent implements OnInit {
   name: string;
   age: number;
-  arrNumber = [ 1, 3, 25, 62, 31, 11 ];
-  constructor() { }
+  arrNumber = [1, 25, 62, 3, 31, 11];
+  // .filter(e => {
+  //   if (e >= 10) { return e; }
+  // });
+
+  constructor() {
+    console.log(this.arrNumber);
+  }
 
   ngOnInit() {
   }

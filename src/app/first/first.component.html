@@ -4,19 +4,42 @@
 <h4> {{ name }} </h4>
 <h4> {{ txtName.value }} </h4>
 
-<input type="text" #txtAge placeholder="Enter Age"
-(keyup)="getData(txtAge)">
+<input type="text" #txtAge placeholder="Enter Age" (keyup)="getData(txtAge)">
 <!-- number: pipe -->
 <p>{{ age | number}}</p>
 <p>{{ txtAge.value }}</p>
 
-<input type="text" placeholder="Enter School"
-[(ngModel)]="txtSchool">
- 
+<input type="text" placeholder="Enter School" [(ngModel)]="txtSchool">
+
 <p>{{txtSchool}}</p>
 <ol type="A">
-    <li *ngFor="let item of arrNumber">{{ item }}</li>
+    <li *ngFor="let item of arrNumber" [style.color]="item>=10 ? 'red' : 'blue'">{{ item }}</li>
 </ol>
+
+<ol type="A">
+    <li *ngFor="let item of arrNumber">
+        <span *ngIf="item>=10" style="color:red">{{ item }}</span>
+        <!-- <span *ngIf="item<10" style="color:blue">{{ item }}</span> -->
+    </li>
+</ol>
+<div class="row">
+    <div style="background-color: #f3f3f3" class="col-4" *ngFor="let item of arrNumber">
+        <div *ngIf="item>=10">{{item}}</div>
+    </div>
+</div>
+<ul>
+    <ng-container *ngFor="let item of arrNumber">
+        <li *ngIf="item>=10">{{item}}</li>
+    </ng-container>
+</ul>
+<div class="row">
+    <ng-container *ngFor="let item of arrNumber">
+        <div style="background-color: #f3f3f3" class="col-4" *ngIf="item>=10">
+            <div>{{item}}</div>
+        </div>
+    </ng-container>
+</div>
+
 <p>{{ arrNumber }}</p>
 <p *ngIf="1==1; else dataElse">DK is true</p>
 <ng-template #dataElse>
