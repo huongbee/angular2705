@@ -11,6 +11,7 @@
                 <div class="form-group">
                     <label>Fullname:</label>
                     <input type="text" formControlName="fullname" class="form-control" placeholder="Fullname">
+                    <small *ngIf="!isValidInput('fullname')">fullname invalid!</small>
                 </div>
                 <div class="form-group">
                     <label>Age:</label>
@@ -19,11 +20,13 @@
                 <div class="form-group">
                     <label>Password:</label>
                     <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                    <small *ngIf="!isValidInput('password')">password invalid!</small>
                 </div>
                 <div class="form-group">
                     <label>Confirmation Password:</label>
                     <input type="password" formControlName="confirm_password" class="form-control"
                         placeholder="confirm password">
+                    <small *ngIf="!passwordMustMatch()">password must match!</small>
                 </div>
                 <div class="form-group">
                     <!-- <button type="reset" class="btn btn-success">Clear</button> -->

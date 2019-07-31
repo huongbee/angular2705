@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -41,6 +42,14 @@ export class SignupComponent implements OnInit {
   isValidInput(controlName: string): boolean {
     const input = this.formSignUp.get(controlName);
     if (input.invalid && input.touched) {
+      return false;
+    }
+    return true;
+  }
+  passwordMustMatch(): boolean {
+    const password = this.formSignUp.get('password');
+    const rePassword = this.formSignUp.get('confirm_password');
+    if (password.valid && rePassword.touched && password.value !== rePassword.value) {
       return false;
     }
     return true;
