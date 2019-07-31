@@ -38,4 +38,11 @@ export class SignupComponent implements OnInit {
     const { email, fullname, age, password, confirm_password } = this.formSignUp.value;
     console.log(email, fullname, age, password, confirm_password);
   }
+  isValidInput(controlName: string): boolean {
+    const input = this.formSignUp.get(controlName);
+    if (input.invalid && input.touched) {
+      return false;
+    }
+    return true;
+  }
 }
