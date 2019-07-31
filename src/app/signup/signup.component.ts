@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -11,11 +11,24 @@ export class SignupComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formSignUp = this.formBuilder.group({
-      email: 'admin@gmail.com',
-      fullname: '',
-      age: '',
-      password: '',
-      confirm_password: ''
+      email: ['', [
+        Validators.email,
+        Validators.required
+      ]],
+      fullname: ['', Validators.required],
+      age: ['', [
+        Validators.pattern('[0-9]+'),
+        Validators.max(80),
+        Validators.min(20)
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(6)
+      ]],
+      confirm_password: ['', [
+        Validators.required,
+        Validators.minLength(6)
+      ]]
     });
   }
 
@@ -23,7 +36,6 @@ export class SignupComponent implements OnInit {
   }
   onSignUp() {
     const { email, fullname, age, password, confirm_password } = this.formSignUp.value;
-
     console.log(email, fullname, age, password, confirm_password);
   }
 }
