@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { of } from 'rxjs';
+import { FormGroup, FormBuilder, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +13,8 @@ export class SignupComponent implements OnInit {
     this.formSignUp = this.formBuilder.group({
       email: ['', [
         Validators.email,
-        Validators.required
+        Validators.required,
+        isGmail
       ]],
       fullname: ['', Validators.required],
       age: ['', [
@@ -54,4 +54,18 @@ export class SignupComponent implements OnInit {
     }
     return true;
   }
+}
+/**
+ * Customize new Validators
+ * @param controlName: AbstractControl
+ */
+function isGmail(controlName: AbstractControl): ValidationErrors | null {
+  // const check = (controlName.value as string).endsWith('@gmail.com') ;
+  // // input invalid => ValidationErrors
+  // if (!check) {
+  //   return { error: 'Error!' };
+  // }
+  // // input valid
+  // return null;
+  return (controlName.value as string).endsWith('@gmail.com') ? null : { error: 'Error!' };
 }
